@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Scroll bar */
+progress[value] {
+    -webkit-appearance: none;
+    appearance: none;
+  
+    width: 100%;
+    height: 10px;
+  }
+  
+  progress[value]::-webkit-progress-bar {
+    background-color: #f1f3fa;
+    border-radius: 50%;
+  }
+  
+  ::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #8f8f8f;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #9e9e9e;
+  }
