@@ -1,62 +1,62 @@
 export const Characteristicts = [
   {
-    id: 1,
+    id: "SYM-551",
     name: "Munculnya ruam",
   },
   {
-    id: 2,
+    id: "SYM-552",
     name: "Kulit kering",
   },
   {
-    id: 3,
+    id: "SYM-553",
     name: "Iritasi",
   },
   {
-    id: 4,
+    id: "SYM-554",
     name: "Luka lepuh pada area kulit yang bersentuhan dengan zat iritan kimia",
   },
   {
-    id: 5,
+    id: "SYM-555",
     name: "Kemerahan dan bengkak",
   },
   {
-    id: 6,
+    id: "SYM-556",
     name:
       "Muncul ketika kulit bersentuhan dengan alergen seperti bahan kimia, kosmetik, cat kuku, sarung tangan lateks, protein, atau perhiasan",
   },
   {
-    id: 7,
+    id: "SYM-557",
     name: "Kulit merah",
   },
   {
-    id: 8,
+    id: "SYM-558",
     name: "Gatal",
   },
   {
-    id: 9,
+    id: "SYM-559",
     name: "Kering",
   },
   {
-    id: 10,
+    id: "SYM-560",
     name: "Bersisik",
   },
 ];
 
 export const Diseases = [
   {
-    id: 1,
+    id: "DIS-0001",
     name: "Iritan",
-    characteristict_id: [1, 2, 3, 4],
+    characteristict_id: ["SYM-551", "SYM-552", "SYM-553", "SYM-554"],
   },
   {
-    id: 2,
+    id: "DIS-0002",
     name: "Alergi",
-    characteristict_id: [5, 6],
+    characteristict_id: ["SYM-555", "SYM-556"],
   },
   {
-    id: 3,
+    id: "DIS-0003",
     name: "Atopik (eksim kering)",
-    characteristict_id: [7, 8, 9, 10],
+    characteristict_id: ["SYM-557", "SYM-558", "SYM-559", "SYM-560"],
   },
 ];
 
@@ -66,7 +66,7 @@ for (let i = 0; i < Diseases.length; i++) {
     Rule.push({
       ...Diseases[i],
       isTrue: Diseases[i].characteristict_id[0],
-      isFalse: Diseases[i + 1].name,
+      isFalse: Diseases[i + 1].id,
     });
   else
     Rule.push({
@@ -89,6 +89,3 @@ for (let i = 0; i < Diseases.length; i++) {
     }
   }
 }
-
-const find: any = Characteristicts.find(e => e.id === 2)
-console.log(find.name);

@@ -18,12 +18,16 @@ export default class RulePage extends Vue {
   // Data Table
   columns = [
     {
-      name: "No",
-      key: "no",
-      styleHead: "w-1/12 text-left whitespace-no-wrap",
-      styleBody: "text-red-lp-200",
-      render: (item: any, index: number) => {
-        return `<span class='text-center text-red-600'>${index + 1}</span>`;
+      name: "Kode",
+      key: "name",
+      styleHead: "w-2/12 text-center",
+      styleBody: "text-center rounded px-2 py-0",
+      render: (item: any) => {
+        return `<div class='text-center ${
+          item.id.toLowerCase().includes("dis")
+            ? "text-green-600"
+            : "text-blue-600"
+        }'>${item.id}</div>`;
       },
     },
     {
@@ -41,7 +45,13 @@ export default class RulePage extends Vue {
       styleHead: "w-2/12 text-center",
       styleBody: "text-left rounded px-2 py-0",
       render: (item: any) => {
-        return `<div class='text-center text-gray-700'>${item.isTrue}</div>`;
+        return `<div class='text-center ${
+          item.isTrue.toLowerCase().includes("end")
+            ? "text-red-600 font-semibold"
+            : item.isTrue.toLowerCase().includes("dis")
+            ? "text-green-600"
+            : "text-blue-600"
+        }'>${item.isTrue}</div>`;
       },
     },
     {
@@ -50,7 +60,13 @@ export default class RulePage extends Vue {
       styleHead: "w-2/12 text-center",
       styleBody: "text-left rounded px-2 py-0",
       render: (item: any) => {
-        return `<div class='text-center text-gray-700'>${item.isFalse}</div>`;
+        return `<div class='text-center ${
+          item.isFalse.toLowerCase().includes("end")
+            ? "text-red-600 font-semibold"
+            : item.isFalse.toLowerCase().includes("dis")
+            ? "text-green-600"
+            : "text-blue-600"
+        }'>${item.isFalse}</div>`;
       },
     },
   ];
