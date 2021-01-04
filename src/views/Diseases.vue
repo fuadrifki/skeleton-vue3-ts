@@ -14,7 +14,7 @@ import { Diseases } from "@/utils/Data";
     Table,
   },
 })
-export default class Rule extends Vue {
+export default class DiseasesPage extends Vue {
   // Data Table
   columns = [
     {

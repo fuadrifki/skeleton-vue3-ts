@@ -4,11 +4,16 @@
       class="justify-center items-center flex overflow-hidden fixed inset-0 z-20 outline-none focus:outline-none"
     >
       <div
-        class="relative max-w-3xl max-h-xl flex flex-col justify-between bg-white rounded p-8"
+        class="relative max-w-3xl flex flex-col justify-between bg-white rounded"
       >
-        <slot name="content"></slot>
+        <div class="px-8 py-4 rounded-t">
+          <slot name="header" />
+        </div>
+        <div class="max-h-96 overflow-auto px-8">
+          <slot name="content" />
+        </div>
         <div
-          class="items-center justify-center flex flex-row rounded-b-md text-xs bg-gray-lp-700 mt-4"
+          class="items-center justify-center flex flex-row rounded-b-md text-xs bg-gray-lp-700 px-8 py-6 mt-2 border-t border-gray-300"
         >
           <div class="flex">
             <Button
