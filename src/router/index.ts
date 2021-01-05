@@ -68,7 +68,7 @@ const routes: RouteRecordRaw[] = [
     ],
   },
   {
-    path: '/symtoms',
+    path: '/symptoms',
     name: 'Gejala',
     component: LayoutAccess,
     meta: {
@@ -78,7 +78,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: '',
         name: 'Gejala',
-        component: () => import('../views/Symtoms.vue'),
+        component: () => import('../views/Symptoms.vue'),
       },
     ],
   },

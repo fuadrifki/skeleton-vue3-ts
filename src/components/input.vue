@@ -6,7 +6,8 @@
       v-model="value"
       @input="(e) => onChange(e)"
       @keyup.enter="onSubmit"
-      class="w-full capitalize text-12px py-1.5 px-4 text-gray-900 border border-gray-300 rounded focus:outline-none"
+      class="w-full text-12px py-1.5 px-4 text-gray-900 border border-gray-300 rounded focus:outline-none"
+      :maxlength="maxLength"
     />
     <div v-show="isError" class="mt-2 text-12px px-4 text-red-600">{{ errorText }}</div>
   </div>
@@ -41,6 +42,10 @@ import { PropType } from "vue";
     value: {
       default: "",
       type: String,
+    },
+    maxLength: {
+      default: 255,
+      type: Number,
     },
     onChange: {
       default: Function as PropType<() => void>,

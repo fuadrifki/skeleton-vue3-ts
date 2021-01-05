@@ -6,7 +6,7 @@
       <div
         class="relative max-w-3xl flex flex-col justify-between bg-white rounded"
       >
-        <div class="px-8 py-4 rounded-t">
+        <div class="px-8 py-4 mb-2 rounded-t">
           <slot name="header" />
         </div>
         <div class="max-h-96 overflow-auto px-8">
@@ -17,8 +17,9 @@
         >
           <div class="flex">
             <Button
+              v-if="cancelText"
               type="outline"
-              title="Kembali"
+              :title="cancelText"
               @click="onClose"
               class="mr-2"
             />
@@ -50,6 +51,10 @@ import Button from "@/components/button.vue";
     onSubmit: {
       default: Function as PropType<() => void>,
       type: Function,
+    },
+    cancelText: {
+      default: "Kembali",
+      type: String,
     },
     successText: {
       default: "Simpan",

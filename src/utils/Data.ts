@@ -60,7 +60,13 @@ export const Diseases = [
   },
 ];
 
-export let Rule: Array<any> = [];
+export interface RuleInterface {
+  id: string,
+  name: string,
+  isTrue: string,
+  isFalse: string
+}
+export let Rule: Array<RuleInterface> = [];
 for (let i = 0; i < Diseases.length; i++) {
   if (i !== Diseases.length - 1)
     Rule.push({

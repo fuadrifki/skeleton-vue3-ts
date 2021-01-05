@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-row h-screen max-h-screen overflow-hidden">
     <div class="w-2/5 bg-blue-100 flex items-center justify-center">
-      <div class="w-full max-w-sm">
+      <div class="w-full max-w-96">
         <div class="font-bold text-20px mb-10 text-gray-500 text-center">
           Log In to your account
         </div>
@@ -12,6 +12,7 @@
             placeholder="admin@admin.com"
             class="my-2"
             :onChange="setUsername"
+            :value="formData.name"
             :isError="isError.name"
             errorText="Username/email tidak valid"
             @keyup.enter="_onLogin"
@@ -25,6 +26,7 @@
             placeholder="*****"
             class="my-2"
             :onChange="setPassword"
+            :value="formData.password"
             :isError="isError.password"
             errorText="Password tidak valid"
             @keyup.enter="_onLogin"
@@ -80,10 +82,14 @@ export default class Login extends Vue {
         this.formData.name === "admin@admin.com");
     const password =
       this.formData.password && this.formData.password === "12345";
+
+      // Handle success
     if (username && password) {
       setUserInfo({ name: this.formData.name });
       router.push("/beranda");
     } 
+
+    // Handle error
     if (!username) this.isError.name = true;
     else this.isError.name = false;
     if (!password) this.isError.password = true;
