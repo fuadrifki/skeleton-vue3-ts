@@ -11,14 +11,12 @@
       <Button title="Mulai Diagnosa" class="mt-4" :onClick="_onDiagnosa" />
     </div>
   </div>
-  <Modal
-    v-show="isDiagnosis"
-    :onClose="() => setDiagnosa(false)"
-    :onSubmit="_onSubmit"
-  >
+
+  <!-- Modal Diagnosa -->
+  <Modal v-show="isDiagnosis" :onClose="_onReset" :onSubmit="_onSubmit">
     <template #header v-if="dataReport.length > 0">
-      <div v-for="(item, index) in dataReport" :key="index">
-        <div class="py-4">Data Pasien ke-{{ index + 1 }}</div>
+      <div>
+        <div class="py-4">Data Pasien ke-{{ formData.index + 1 }}</div>
       </div>
     </template>
     <template #content>
@@ -29,46 +27,54 @@
             Jumlah data yang akan di diagnosa
           </div>
           <Input
+            :value="formData.total"
             placeholder="1"
             class="my-2"
             :onChange="setTotalData"
             :isError="isError.total"
             errorText="Jumlah data tidak valid"
+            :onSubmit="_onSetTotal"
           />
         </div>
       </div>
 
       <!-- Biodata Pasien -->
       <div v-if="dataReport.length > 0" class="w-96 my-2 text-gray-600">
-        <div v-for="(item, index) in dataReport" :key="index">
+        <div>
           <div class="my-4">
             <div class="text-14px px-4 font-medium">Nama</div>
             <Input
+              :value="formData.name"
               placeholder="John Doe"
               class="my-2"
               :onChange="setNameData"
               :isError="isError.name"
               errorText="Nama tidak valid"
+              :onSubmit="_onSetDataReport"
             />
           </div>
           <div class="my-4">
             <div class="text-14px px-4 font-medium">Alamat</div>
             <Input
-              placeholder="Jl. Mawar No. 12 Yogyakarta"
+              :value="formData.address"
+              placeholder="Jl. Pahlawan No. 12 Yogyakarta"
               class="my-2"
               :onChange="setAddressData"
               :isError="isError.address"
               errorText="Alamat tidak valid"
+              :onSubmit="_onSetDataReport"
             />
           </div>
           <div class="my-4">
             <div class="text-14px px-4 font-medium">Usia (tahun)</div>
             <Input
+              :value="formData.age"
               placeholder="20"
               class="my-2"
               :onChange="setAgeData"
               :isError="isError.age"
               errorText="Usia tidak valid"
+              :onSubmit="_onSetDataReport"
             />
           </div>
         </div>
@@ -99,7 +105,8 @@ export default class Diagnosis extends Vue {
     total: "",
     name: "",
     address: "",
-    age: 1,
+    age: "",
+    index: 0,
   };
 
   isError = {
@@ -123,13 +130,14 @@ export default class Diagnosis extends Vue {
   }
 
   setAgeData(e: any) {
+    e.target.value = NumberOnly(e.target.value);
     this.formData.age = e.target.value;
   }
   _onDiagnosa() {
     this.setDiagnosa(true);
   }
 
-  _onSubmit() {
+  _onSetTotal() {
     if (!Number(this.formData.total)) this.isError.total = true;
     else this.isError.total = false;
 
@@ -139,7 +147,7 @@ export default class Diagnosis extends Vue {
           id: i + 1,
           name: "",
           address: "",
-          age: 1,
+          age: "",
         });
       }
     }
@@ -149,7 +157,6 @@ export default class Diagnosis extends Vue {
   isDiagnosis = false;
   setDiagnosa(value: boolean) {
     this.isDiagnosis = value;
-    this.dataReport = [];
   }
 
   // Data
@@ -165,12 +172,41 @@ export default class Diagnosis extends Vue {
     id: number;
     name: string;
     address: string;
-    age: number;
+    age: string;
   }> = [];
-  setDataReportName(idx: number) {
-    this.dataReport[idx].name = this.formData.name;
-    this.dataReport[idx].address = this.formData.address;
-    this.dataReport[idx].age = this.formData.age;
+
+  _onSetDataReport() {
+    this.dataReport[this.formData.index].name = this.formData.name;
+    this.dataReport[this.formData.index].address = this.formData.address;
+    this.dataReport[this.formData.index].age = this.formData.age;
+    this.formData = {
+      total: this.formData.total,
+      name: "",
+      address: "",
+      age: "",
+      index: this.formData.index + 1,
+    };
+    if (this.formData.index === Number(this.formData.total)) this._onReset();
+  }
+
+  // Reset Data
+  _onReset() {
+    this.formData = {
+      total: "",
+      name: "",
+      address: "",
+      age: "",
+      index: 0,
+    };
+    this.dataReport = [];
+    this.setDiagnosa(false);
+  }
+
+  // Handle Submit
+  _onSubmit() {
+    if (this.dataReport.length === 0) this._onSetTotal();
+    else if (this.formData.index < Number(this.formData.total))
+      this._onSetDataReport();
   }
 }
 </script>

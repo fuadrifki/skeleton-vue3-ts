@@ -44,17 +44,17 @@ export const Characteristicts = [
 
 export const Diseases = [
   {
-    id: "DIS-0001",
+    id: "DIS-1001",
     name: "Iritan",
     characteristict_id: ["SYM-551", "SYM-552", "SYM-553", "SYM-554"],
   },
   {
-    id: "DIS-0002",
+    id: "DIS-1002",
     name: "Alergi",
     characteristict_id: ["SYM-555", "SYM-556"],
   },
   {
-    id: "DIS-0003",
+    id: "DIS-1003",
     name: "Atopik (eksim kering)",
     characteristict_id: ["SYM-557", "SYM-558", "SYM-559", "SYM-560"],
   },

@@ -3,8 +3,10 @@
     <input
       :type="type.toLowerCase().includes('password') ? 'password' : 'text'"
       :placeholder="placeholder"
+      v-model="value"
       @input="(e) => onChange(e)"
-      class="w-full text-12px py-1.5 px-4 text-gray-900 border border-gray-300 rounded focus:outline-none"
+      @keyup.enter="onSubmit"
+      class="w-full capitalize text-12px py-1.5 px-4 text-gray-900 border border-gray-300 rounded focus:outline-none"
     />
     <div v-show="isError" class="mt-2 text-12px px-4 text-red-600">{{ errorText }}</div>
   </div>
@@ -36,7 +38,15 @@ import { PropType } from "vue";
       default: "",
       type: String,
     },
+    value: {
+      default: "",
+      type: String,
+    },
     onChange: {
+      default: Function as PropType<() => void>,
+      type: Function,
+    },
+    onSubmit: {
       default: Function as PropType<() => void>,
       type: Function,
     },
