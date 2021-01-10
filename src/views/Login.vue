@@ -8,11 +8,10 @@
         <div class="w-full my-3 text-gray-600">
           <div class="text-14px px-4 font-medium">Username/Email</div>
           <Input
+            v-model="formData.name"
             :isDisable="false"
             placeholder="admin@admin.com"
             class="my-2"
-            :onChange="setUsername"
-            :value="formData.name"
             :isError="isError.name"
             errorText="Username/email tidak valid"
             @keyup.enter="_onLogin"
@@ -21,12 +20,11 @@
         <div class="w-full my-3 text-gray-600">
           <div class="text-14px px-4 font-medium">Password</div>
           <Input
+            v-model="formData.password"
             type="password"
             :isDisable="false"
             placeholder="*****"
             class="my-2"
-            :onChange="setPassword"
-            :value="formData.password"
             :isError="isError.password"
             errorText="Password tidak valid"
             @keyup.enter="_onLogin"
@@ -69,31 +67,25 @@ export default class Login extends Vue {
     password: false,
   };
 
-  setUsername(e: any) {
-    this.formData.name = e.target.value;
-  }
-  setPassword(e: any) {
-    this.formData.password = e.target.value;
-  }
   _onLogin() {
     const username =
       this.formData.name &&
       (this.formData.name === "admin" ||
         this.formData.name === "admin@admin.com");
     const password =
-      this.formData.password && this.formData.password === "12345";
-
-      // Handle success
-    if (username && password) {
-      setUserInfo({ name: this.formData.name });
-      router.push("/beranda");
-    } 
+      this.formData.password && this.formData.password === "Admin123";
 
     // Handle error
     if (!username) this.isError.name = true;
     else this.isError.name = false;
     if (!password) this.isError.password = true;
     else this.isError.password = false;
+
+      // Handle success
+    if (username && password) {
+      setUserInfo({ name: this.formData.name });
+      router.push("/beranda");
+    } 
   }
 }
 </script>

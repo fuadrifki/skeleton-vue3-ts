@@ -1,3 +1,5 @@
+import { RuleInterface } from "./Interface";
+
 export const Characteristicts = [
   {
     id: "SYM-551",
@@ -60,12 +62,6 @@ export const Diseases = [
   },
 ];
 
-export interface RuleInterface {
-  id: string,
-  name: string,
-  isTrue: string,
-  isFalse: string
-}
 export let Rule: Array<RuleInterface> = [];
 for (let i = 0; i < Diseases.length; i++) {
   if (i !== Diseases.length - 1)

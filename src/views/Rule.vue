@@ -21,7 +21,6 @@ export default class RulePage extends Vue {
       name: "Kode",
       key: "name",
       styleHead: "w-2/12 text-center",
-      styleBody: "text-center rounded px-2 py-0",
       render: (item: any) => {
         return `<div class='text-center ${
           item.id.toLowerCase().includes("dis")
@@ -34,7 +33,6 @@ export default class RulePage extends Vue {
       name: "Nama Penyakit",
       key: "name",
       styleHead: "w-auto text-left",
-      styleBody: "text-left rounded px-2 py-0",
       render: (item: any) => {
         return `<div class='text-left text-gray-700'>${item.name}</div>`;
       },
@@ -43,7 +41,6 @@ export default class RulePage extends Vue {
       name: "Jawaban Benar",
       key: "isTrue",
       styleHead: "w-2/12 text-center",
-      styleBody: "text-left rounded px-2 py-0",
       render: (item: any) => {
         return `<div class='text-center ${
           item.isTrue.toLowerCase().includes("end")
@@ -58,7 +55,6 @@ export default class RulePage extends Vue {
       name: "Jawaban Salah",
       key: "isFalse",
       styleHead: "w-2/12 text-center",
-      styleBody: "text-left rounded px-2 py-0",
       render: (item: any) => {
         return `<div class='text-center ${
           item.isFalse.toLowerCase().includes("end")

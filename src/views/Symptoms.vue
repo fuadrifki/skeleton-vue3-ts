@@ -21,7 +21,6 @@ export default class Rule extends Vue {
       name: "No",
       key: "no",
       styleHead: "w-1/12 text-center whitespace-no-wrap",
-      styleBody: "text-red-lp-200",
       render: (item: any, index: number) => {
         return `<div class='text-center text-red-lp-200'>${index + 1}</div>`;
       },
@@ -30,7 +29,6 @@ export default class Rule extends Vue {
       name: "Kode Gejala",
       key: "code",
       styleHead: "w-2/12 text-center",
-      styleBody: "text-center rounded px-2 py-0",
       render: (item: any) => {
         return `<div class='text-center ${
           item.id.toLowerCase().includes("dis")
@@ -43,7 +41,6 @@ export default class Rule extends Vue {
       name: "Nama Gejala",
       key: "name",
       styleHead: "w-auto text-left",
-      styleBody: "text-left rounded px-2 py-0",
       render: (item: any) => {
         return `<div class='flex text-black-lp-300'>${item.name}</div>`;
       },
