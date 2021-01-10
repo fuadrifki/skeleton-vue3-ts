@@ -59,12 +59,14 @@
           currentRoute.toLowerCase() !== 'beranda' && 'border-t border-gray-300'
         }`"
       >
-        &copy; {{ new Date().getFullYear() }}
-        <span
-          class="cursor-pointer text-blue-600 hover:text-blue-800 hover:underline"
-          @click="onCopyright"
-          >Fuad Rifki</span
-        >. All Right Reserved
+        <div class="opacity-60">
+          &copy; {{ new Date().getFullYear() }}
+          <span
+            class="cursor-pointer text-blue-700 hover:text-blue-800 font-semibold hover:underline"
+            @click="onCopyright"
+            >Fuad Rifki</span
+          >. All Right Reserved
+        </div>
       </div>
     </div>
   </div>

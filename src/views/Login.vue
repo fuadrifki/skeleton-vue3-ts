@@ -70,10 +70,10 @@ export default class Login extends Vue {
   _onLogin() {
     const username =
       this.formData.name &&
-      (this.formData.name === "admin" ||
-        this.formData.name === "admin@admin.com");
+      (this.formData.name === "fuad.rifki_" ||
+        this.formData.name === "fuad.rifki_@admin.com");
     const password =
-      this.formData.password && this.formData.password === "Admin123";
+      this.formData.password && this.formData.password === "Fuadrifki111";
 
     // Handle error
     if (!username) this.isError.name = true;
