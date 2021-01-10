@@ -22,10 +22,7 @@
         v-for="(item, index) in data"
         :key="index"
         @click="(isDetailable) ? onClick(item): () => {}"
-        class="hover:bg-gray-100"
-        :class="{
-          'cursor-pointer': isDetailable
-        }"
+        :class="`${isDetailable && 'cursor-pointer'} hover:bg-gray-100 justify-start items-start`"
       >
         <td
           v-for="(column, indexColumn) in columns"
