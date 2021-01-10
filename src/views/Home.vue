@@ -6,7 +6,7 @@
       class="w-40 mb-4"
     />
     <div>Selamat Datang di Aplikasi</div>
-    <div>Sistem Pakar Penyakit Kulit</div>
+    <div>Skeleton Vue 3 Typescript</div>
   </div>
 </template>
 

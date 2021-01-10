@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="flex flex-row h-screen max-h-screen overflow-hidden"
-    v-if="_checkAuth"
-  >
+  <div class="flex flex-row h-screen max-h-screen overflow-hidden">
     <div class="w-1/5 bg-blue-200 flex flex-col justify-between">
       <div class="flex flex-col">
         <div
@@ -14,7 +11,7 @@
             alt=""
             class="w-10 mr-3"
           />
-          <div class="text-20px font-semibold uppercase">Sistem Pakar</div>
+          <div class="text-18px font-semibold uppercase">Vue 3 Typescript</div>
         </div>
         <div v-for="(item, index) in routeList" :key="index">
           <div
@@ -35,10 +32,10 @@
         Logout
       </div>
     </div>
-    <div class="w-4/5 border-l border-gray-300 bg-gray-100 py-4 pl-4">
+    <div class="w-4/5 border-l border-gray-300 bg-gray-100 py-4 relative">
       <div
         v-if="currentRoute.toLowerCase() !== 'beranda'"
-        class="flex flex-row items-center text-16px text-gray-600 font-semibold py-4 border-b border-gray-300 mr-4"
+        class="flex flex-row items-center text-16px text-gray-600 font-semibold pl-4 py-4 border-b border-gray-300 mr-4"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +53,19 @@
         </svg>
         {{ "/ " + currentRoute }}
       </div>
-      <router-view class="pt-4" />
+      <router-view class="pt-4 pl-4 pb-40 min-h-screen" />
+      <div
+        :class="`absolute bottom-0 bg-gray-100 text-center py-4 w-full text-12px ${
+          currentRoute.toLowerCase() !== 'beranda' && 'border-t border-gray-300'
+        }`"
+      >
+        &copy; {{ new Date().getFullYear() }}
+        <span
+          class="cursor-pointer text-blue-600 hover:text-blue-800 hover:underline"
+          @click="onCopyright"
+          >Fuad Rifki</span
+        >. All Right Reserved
+      </div>
     </div>
   </div>
 
@@ -135,14 +144,6 @@ export default class LayoutAccess extends Vue {
   _onToMenu(path: string) {
     router.push(path);
   }
-  get _checkAuth() {
-    const auth = getUserInfo();
-    if (!auth) {
-      this._onToMenu("/");
-      removeAuthCredential();
-    }
-    return true;
-  }
 
   // Logout
   isConfirm = false;
@@ -153,6 +154,10 @@ export default class LayoutAccess extends Vue {
     this.setConfirm(false);
     this._onToMenu("/");
     removeAuthCredential();
+  }
+
+  onCopyright() {
+    window.open("https://github.com/fuadrifki");
   }
 }
 </script>

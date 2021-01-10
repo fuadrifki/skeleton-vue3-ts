@@ -1,5 +1,5 @@
 <template>
-  <router-view v-if="_checkAuth" />
+  <router-view />
 </template>
 
 <script lang="ts">
@@ -18,13 +18,6 @@ import router from "@/router";
 export default class Layout extends Vue {
   _onToMenu(path: string) {
     router.push(path);
-  }
-  get _checkAuth() {
-    const auth = getUserInfo();
-    if (auth.name) {
-      this._onToMenu("/beranda");
-    }
-    return true;
   }
 }
 </script>

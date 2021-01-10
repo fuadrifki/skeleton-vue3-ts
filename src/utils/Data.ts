@@ -61,33 +61,3 @@ export const Diseases = [
     characteristict_id: ["SYM-557", "SYM-558", "SYM-559", "SYM-560"],
   },
 ];
-
-export let Rule: Array<RuleInterface> = [];
-for (let i = 0; i < Diseases.length; i++) {
-  if (i !== Diseases.length - 1)
-    Rule.push({
-      ...Diseases[i],
-      isTrue: Diseases[i].characteristict_id[0],
-      isFalse: Diseases[i + 1].id,
-    });
-  else
-    Rule.push({
-      ...Diseases[i],
-      isTrue: Diseases[i].characteristict_id[0],
-      isFalse: "End",
-    });
-
-  for (let j = 0; j < Diseases[i].characteristict_id.length; j++) {
-    for (let k = 0; k < Characteristicts.length; k++) {
-      if (Diseases[i].characteristict_id[j] === Characteristicts[k].id)
-        if (j !== Diseases[i].characteristict_id.length - 1)
-          Rule.push({
-            ...Characteristicts[k],
-            isTrue: Diseases[i].characteristict_id[j + 1],
-            isFalse: Diseases[i].characteristict_id[j + 1],
-          });
-        else
-          Rule.push({ ...Characteristicts[k], isTrue: "End", isFalse: "End" });
-    }
-  }
-}
