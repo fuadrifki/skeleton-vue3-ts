@@ -8,6 +8,7 @@
 ## Requirement
 * [`npm`](https://www.npmjs.com/get-npm)
 * [`vue 3`](https://v3.vuejs.org/)
+* [`tailwind css`](https://tailwindcss.com/)
 
 ## Usage for development
 1. Open your terminal or command prompt
